@@ -1,1 +1,77 @@
-<p>basicos works!</p>
+<h4>Reactivos: Básicos</h4>
+
+<br>
+
+<div class="row">
+  <div class="col">
+    <form autocomplete="off" [formGroup]="miFormulario" (ngSubmit)="guardar()">
+      <!-- Nombre del producto -->
+      <div class="mb-3 row">
+        <label for="staticProducto" class="col-sm-2 col-form-label">Producto</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" formControlName="nombre" placeholder="Nombre del producto">
+
+          <!-- El mensaje de error aparece cuando el valor del formulario no  cumple la condición después de haber sido tocado y cambiado su valor -->
+          <div class="minAlto">
+            <span class="form-text text-danger" *ngIf="campoNoEsValido('nombre')">Debe
+              ser de 3
+              letras</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Precio del producto -->
+      <div class="mb-3 row">
+        <label for="staticProducto" class="col-sm-2 col-form-label">Precio</label>
+        <div class="col-sm-10">
+          <input type="number" class="form-control" formControlName="precio" placeholder="Precio del producto">
+          <!-- El mensaje de error aparece cuando el precio es menor a 0  -->
+          <div class="minAlto">
+            <span class="form-text text-danger" *ngIf="campoNoEsValido('precio')">El precio no debe ser menor
+              a 0</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Existencias del producto -->
+      <div class="mb-3 row">
+        <label for="staticProducto" class="col-sm-2 col-form-label">Existencias</label>
+        <div class="col-sm-10">
+          <input type="number" class="form-control" id="staticProducto" formControlName="existencias"
+            placeholder="Existencias del producto">
+          <!-- El mensaje de error aparece cuando el precio es menor a 0  -->
+          <div class="minAlto">
+            <span class="form-text text-danger" *ngIf="campoNoEsValido('existencias')">El precio no debe ser menor
+              a 0</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Botón para enviar formulario -->
+      <div class="row">
+        <div class="col">
+          <button type="submit" class="btn btn-primary float-end">Guardar <i class="bi-save"></i></button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col">
+    <span>Valid</span>
+    <pre>{{miFormulario.valid}}</pre>
+
+    <span>Pristine</span>
+    <pre>{{miFormulario.pristine}}</pre>
+
+    <span>Touched</span>
+    <pre>{{miFormulario.touched}}</pre>
+
+    <span>Value</span>
+    <pre>{{miFormulario.value | json}}</pre>
+
+    <span>CustomMinDirective</span>
+    <pre>{{miFormulario.controls["existencias"]?.errors | json}}</pre>
+  </div>
+</div>
