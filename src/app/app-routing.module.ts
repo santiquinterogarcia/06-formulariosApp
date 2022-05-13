@@ -13,6 +13,11 @@ const routes: Routes = [
       import('./reactive/reactive.module').then((m) => m.ReactiveModule),
   },
   {
+    path: 'reactive',
+    loadChildren: () =>
+      import('./paises/paises.module').then((m) => m.PaisesModule),
+  },
+  {
     path: 'auth',
     loadChildren: () => import('./auth/auth.module').then((m) => m.AuthModule),
   },
